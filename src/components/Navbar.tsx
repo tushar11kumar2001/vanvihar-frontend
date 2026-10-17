@@ -64,7 +64,7 @@ export default function Navbar() {
 
           <a
             href="#contact"
-            className="rounded-r-full bg-deep-forest-green px-4 py-3 text-sm font-semibold text-white transition-colors hover:bg-sunset-gold hover:text-charcoal-green"
+            className="w-[130px] rounded-r-full bg-deep-forest-green px-4 py-3 text-sm font-semibold text-white transition-colors hover:bg-sunset-gold hover:text-charcoal-green"
           >
             Enquire Now ↗
           </a>
