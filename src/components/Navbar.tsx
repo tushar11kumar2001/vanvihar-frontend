@@ -130,7 +130,7 @@ export default function Navbar() {
       animate={{ opacity: 1, y: 0, scale: 1 }}
       exit={{ opacity: 0, y: -12, scale: 0.98 }}
       transition={{ duration: 0.22, ease: "easeInOut" }}
-      className="`absolute top-20 right-0 z-50 w-[50%] rounded-lg bg-white px-2 py-2 shadow-lg md:hidden"
+      className="absolute top-20 right-0 z-50 w-[50%] rounded-lg bg-white px-2 py-2 shadow-lg md:hidden"
     >
       <div className="flex flex-col gap-1">
         {navLinks.map((link) => (
