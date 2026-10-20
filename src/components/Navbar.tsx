@@ -4,7 +4,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import { Menu, X } from "lucide-react";
-import NavDropdown from "../components/NavbarDropdown";
+import NavDropdown from "./NavbarDropdown";
 
 const nationalParks = [
   { label: "All National Parks", href: "#national-parks" },

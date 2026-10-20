@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import type { Package } from "@/sections/PopularPackages";
+import type { Package } from "../types/types";
 export default function PackageCard({ item }: { item: Package }) {
     return (
         <Link
