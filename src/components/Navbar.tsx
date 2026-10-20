@@ -123,7 +123,7 @@ export default function Navbar() {
           aria-label={isMenuOpen ? "Close menu" : "Open menu"}
           aria-expanded={isMenuOpen}
           onClick={() => setIsMenuOpen((prev) => !prev)}
-          className="flex shrink-0 items-center justify-center rounded-lg p-2 text-deep-forest-green transition-colors hover:bg-[#e8e2d5] md:hidden"
+          className="flex shrink-0 items-center justify-center rounded-lg p-2 text-sunset-gold transition-colors hover:bg-[#e8e2d5] md:hidden"
         >
           {isMenuOpen ? (
             <X size={26} className="rotate-180 transition-transform duration-300" />

@@ -34,7 +34,7 @@ export default function BookingForm() {
             id="safari-booking"
         >
 
-            <div className=" z-10 w-[300px] backdrop-blur-md">
+            <div className="border-2 border-blue-600 z-10  backdrop-blur-md">
                 <form
                     onSubmit={handleSubmit}
                     className="rounded-2xl border border-white/30 bg-white/20 p-5 shadow-xl shadow-[#19382B]/10 backdrop-blur-xl sm:p-5 md:p-5"

@@ -118,7 +118,7 @@ export default function HeroSection() {
 
                 {/* Booking Form */}
                 <div
-                    className={`hidden md:block relative z-10 mt-8 w-full transition-all duration-700 ease-out md:absolute md:right-10 md:top-1/2 md:mt-0 md:w-auto ${isFormVisible
+                    className={`border-2 border-red-500 hidden md:block relative z-10 mt-8 transition-all duration-700 ease-out md:absolute md:right-10 md:top-1/2 md:mt-0 md:w-[38%] ${isFormVisible
                             ? "translate-y-0 opacity-100 md:-translate-y-1/2"
                             : "pointer-events-none translate-y-6 opacity-0 md:translate-y-[calc(-50%+24px)]"
                         }`}
