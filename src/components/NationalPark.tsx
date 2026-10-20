@@ -132,21 +132,20 @@ export default function NationalParks() {
                     {visibleParks.map((park, index) => (
                         <div
                             key={park.id}
-                            className={`flex w-full ${
-                                index % 2 === 0
+                            className={`flex w-full items-stretch ${index % 2 === 0
                                     ? "justify-start"
                                     : "justify-end"
-                            }`}
+                                }`}
                         >
                             {/* Left Side Images for Odd Cards */}
                             {index % 2 !== 0 && (
-                                <div className="flex flex-col justify-center gap-2 p-2">
+                                <div className="flex w-[20%] shrink-0 flex-col gap-2 p-2">
                                     <Image
                                         src={park.image}
                                         alt={park.name}
                                         width={240}
                                         height={160}
-                                        className="h-40 w-48 rounded-xl object-cover lg:w-60"
+                                        className="min-h-0 w-full flex-1 rounded-xl object-cover"
                                     />
 
                                     <Image
@@ -154,13 +153,13 @@ export default function NationalParks() {
                                         alt={park.name}
                                         width={240}
                                         height={160}
-                                        className="h-40 w-48 rounded-xl object-cover lg:w-60"
+                                        className="min-h-0 w-full flex-1 rounded-xl object-cover"
                                     />
                                 </div>
                             )}
 
-                            {/* Main Park Card */}
-                            <div className="w-full md:w-[75%] lg:w-[65%]">
+                            {/* Main Park Card - 80% */}
+                            <div className="w-[80%] min-w-0">
                                 <NationalParkCard
                                     {...park}
                                     reverse={index % 2 !== 0}
@@ -169,13 +168,13 @@ export default function NationalParks() {
 
                             {/* Right Side Images for Even Cards */}
                             {index % 2 === 0 && (
-                                <div className="flex flex-col justify-center gap-2 px-2">
+                                <div className="flex w-[20%] shrink-0 flex-col gap-2 p-2">
                                     <Image
                                         src={park.image}
                                         alt={park.name}
                                         width={240}
                                         height={160}
-                                        className="h-40 w-48 rounded-xl object-cover lg:w-60"
+                                        className="min-h-0 w-full flex-1 rounded-xl object-cover"
                                     />
 
                                     <Image
@@ -183,7 +182,7 @@ export default function NationalParks() {
                                         alt={park.name}
                                         width={240}
                                         height={160}
-                                        className="h-40 w-48 rounded-xl object-cover lg:w-60"
+                                        className="min-h-0 w-full flex-1 rounded-xl object-cover"
                                     />
                                 </div>
                             )}

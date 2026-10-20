@@ -22,7 +22,7 @@ export default function NationalParkCard({
     reverse = false,
 }: NationalParkCardProps) {
     return (
-        <article className="group w-full max-w-2xl overflow-hidden rounded-2xl border border-[#D9B477]/40 bg-[#F5EDE1] shadow-lg shadow-[#19382B]/10 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
+        <article className="group overflow-hidden rounded-2xl border border-[#D9B477]/40 bg-[#F5EDE1] shadow-lg shadow-[#19382B]/10 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
             <div
                 className={`grid grid-cols-1 sm:grid-cols-[42%_58%] ${
                     reverse ? "sm:[&>*:first-child]:order-2 sm:[&>*:last-child]:order-1" : ""
