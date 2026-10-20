@@ -2,6 +2,8 @@
 import type { Metadata } from "next";
 import { Playfair_Display, Lato } from "next/font/google";
 import "./globals.css";
+import Footer from "@/sections/FooterSection";
+import Navbar from "@/components/Navbar";
 
 const playfair = Playfair_Display({
   variable: "--font-playfair",
@@ -21,16 +23,23 @@ export const metadata: Metadata = {
   description:
     "Discover national parks, wildlife safaris, and unforgettable nature stays with Vanvihar.",
 };
-
 export default function RootLayout({
-  children,
+    children,
 }: LayoutProps<"/">) {
-  return (
-    <html
-      lang="en"
-      className={`${playfair.variable} ${lato.variable} h-full antialiased`}
-    >
-      <body className="flex min-h-full flex-col">{children}</body>
-    </html>
-  );
+    return (
+        <html
+            lang="en"
+            className={`${playfair.variable} ${lato.variable} h-full antialiased`}
+        >
+            <body className="flex min-h-full flex-col">
+                <Navbar />
+
+                <main className="flex-1">
+                    {children}
+                </main>
+
+                <Footer />
+            </body>
+        </html>
+    );
 }

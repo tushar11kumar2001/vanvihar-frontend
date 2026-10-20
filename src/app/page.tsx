@@ -11,14 +11,14 @@ import PopularResorts from "@/sections/PopularResorts";
 export default function Home() {
   return (
     <>
-      <Navbar />
+      {/* <Navbar /> */}
       <HeroSection />
        <AboutSection />
       <NationalParks />
       <PopularPackages />
       <PopularResorts />
       <FAQSection/>
-      <Footer/>
+      {/* <Footer/> */}
     </>
   );
 }
