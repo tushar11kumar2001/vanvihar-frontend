@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useEffect, useState } from "react";
@@ -23,29 +22,31 @@ export default function HeroSection() {
     const [currentTextIndex, setCurrentTextIndex] = useState(0);
     const [visibleLetters, setVisibleLetters] = useState(0);
     const [isFormVisible, setIsFormVisible] = useState(false);
-    // Background image slider
+
+    // Background slider and form entrance animation
     useEffect(() => {
-        const timeout = setTimeout(() => {
+        const formTimeout = setTimeout(() => {
             setIsFormVisible(true);
-        }, 2000);
-        const interval = setInterval(() => {
+        }, 1200);
+
+        const imageInterval = setInterval(() => {
             setCurrentImage((prev) => (prev + 1) % heroImages.length);
         }, 5000);
 
         return () => {
-            clearInterval(interval);
-            clearTimeout(timeout);
+            clearTimeout(formTimeout);
+            clearInterval(imageInterval);
         };
     }, []);
 
-    // Letter-by-letter typing animation
+    // Typing animation
     useEffect(() => {
         const currentText = animatedTexts[currentTextIndex];
 
         if (visibleLetters < currentText.length) {
             const timeout = setTimeout(() => {
                 setVisibleLetters((prev) => prev + 1);
-            }, 150);
+            }, 120);
 
             return () => clearTimeout(timeout);
         }
@@ -61,39 +62,52 @@ export default function HeroSection() {
     }, [visibleLetters, currentTextIndex]);
 
     return (
-    <main className="relative w-full md:h-screen">
-            {/* Hero Section */}
-<section className="relative flex min-h-[calc(100svh-112px)] w-full items-center overflow-hidden bg-[#19382B] px-4 pb-16 pt-16 md:h-full md:min-h-[70vh] md:px-10 md:py-0"> 
-                {/* Background Image Slider */}
+        <main className="relative w-full">
+            <section
+                className="
+                    relative flex min-h-[calc(100svh-112px)] w-full
+                    flex-col justify-center overflow-hidden
+                    bg-[#19382B] px-4 py-14
+                    sm:px-6
+                    md:min-h-[calc(100svh-76px)] md:flex-row
+                    md:items-center md:px-10 md:py-12
+                    lg:px-14 xl:px-16
+                "
+            >
+                {/* Background image slider */}
                 {heroImages.map((image, index) => (
                     <div
                         key={image}
-                        className={`absolute inset-0 h-full bg-cover bg-center bg-no-repeat transition-opacity duration-[1500ms] ease-in-out ${currentImage === index
-                            ? "opacity-100"
-                            : "opacity-0"
-                            }`}
+                        className={`absolute inset-0 bg-cover bg-center bg-no-repeat transition-opacity duration-[1500ms] ease-in-out ${
+                            currentImage === index
+                                ? "opacity-100"
+                                : "opacity-0"
+                        }`}
                         style={{ backgroundImage: `url('${image}')` }}
                         aria-hidden="true"
                     />
                 ))}
 
-                {/* Light Black Gradient Overlay */}
+                {/* Image overlay */}
                 <div
-                    className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/25 to-black/45"
+                    className="absolute inset-0 bg-gradient-to-r from-black/45 via-black/20 to-black/25"
                     aria-hidden="true"
                 />
 
-                {/* Hero Content */}
-                <div className="relative z-10 w-full max-w-5xl py-8 md:w-auto md:py-0">
-                    <div className="mb-4 flex items-center gap-1 text-xs font-semibold uppercase tracking-[0.3em] text-[#D9B477]">
-                        <div className="w-10 border border-[#D9B477]" />
-
-                        <p>INDIA'S WILDLIFE. NEXT JOURNEY</p>
+                {/* Hero content - 60% on desktop */}
+                <div className="relative z-10 flex w-full min-w-0 flex-col justify-center md:w-[60%] md:flex-none md:pr-12 lg:pr-16">
+                    <div className="mb-5 flex items-center gap-3 text-xs font-bold uppercase tracking-[0.2em] text-[#D9B477] sm:text-sm sm:tracking-[0.25em]">
+                        <span className="w-10 shrink-0 border-t-2 border-[#D9B477]" />
+                        <span>Discover the wild</span>
                     </div>
 
-                    <h1 className=" w-[100%] font-serif text-3xl leading-tight text-white md:text-5xl">Explore National parks</h1>
-                    <h1 className="w-[70%] font-serif text-3xl leading-tight   md:text-4    xl text-[#D9B477]">
-                        <span className="text-white">& book</span> {animatedTexts[currentTextIndex].slice(
+                    <h1 className="max-w-3xl font-serif text-[clamp(2.5rem,4vw,4.5rem)] font-medium leading-[1.1] text-white">
+                        Explore National Parks
+                    </h1>
+
+                    <h2 className="mt-4 min-h-[1.4em] font-serif text-[clamp(2rem,3.2vw,3.5rem)] leading-tight text-[#D9B477]">
+                        <span className="text-white">&amp; book</span>
+                        {animatedTexts[currentTextIndex].slice(
                             0,
                             visibleLetters
                         )}
@@ -101,33 +115,38 @@ export default function HeroSection() {
                             className="ml-1 inline-block h-[0.8em] w-[2px] animate-pulse bg-[#D9B477] align-middle"
                             aria-hidden="true"
                         />
-                    </h1>
+                    </h2>
 
-                    <p className="mt-6 max-w-xl text-base leading-7 text-white/90 md:text-lg">
-                        Explore breathtaking national parks, unforgettable
-                        safaris, and extraordinary stays in the heart of nature.
+                    <p className="mt-6 max-w-2xl text-base leading-7 text-white/95 sm:text-lg sm:leading-8 lg:text-xl">
+                        Discover breathtaking national parks, unforgettable
+                        wildlife safaris, and peaceful stays surrounded by
+                        the beauty of nature.
                     </p>
 
-                    <a
-                        href="#national-parks"
-                        className="mt-8 inline-block rounded-full bg-[#D9B477] px-4 py-3 font-semibold text-[#26352B] transition-colors hover:bg-[#F5EDE1]"
-                    >
-                        Explore National Parks ↗
-                    </a>
+                    <div className="mt-8">
+                        <a
+                            href="#national-parks"
+                            className="inline-flex items-center gap-2 rounded-full bg-[#D9B477] px-7 py-4 text-base font-semibold text-[#26352B] shadow-lg transition-all duration-300 hover:-translate-y-1 hover:bg-[#F5EDE1] sm:text-lg"
+                        >
+                            Explore National Parks
+                            <span aria-hidden="true">↗</span>
+                        </a>
+                    </div>
                 </div>
 
-                {/* Booking Form */}
+                {/* Booking form - 40% on desktop */}
                 <div
-                    className={`border-2 border-red-500 hidden md:block relative z-10 mt-8 transition-all duration-700 ease-out md:absolute md:right-10 md:top-1/2 md:mt-0 md:w-[38%] ${isFormVisible
-                            ? "translate-y-0 opacity-100 md:-translate-y-1/2"
-                            : "pointer-events-none translate-y-6 opacity-0 md:translate-y-[calc(-50%+24px)]"
-                        }`}
+                    className={`relative z-10 mt-10 hidden w-full min-w-0 transition-all duration-700 ease-out md:mt-0 md:block md:w-[40%] md:flex-none ${
+                        isFormVisible
+                            ? "translate-y-0 opacity-100"
+                            : "pointer-events-none translate-y-6 opacity-0"
+                    }`}
                 >
                     {isFormVisible && <BookingForm />}
                 </div>
 
-                {/* Slider Indicators */}
-                <div className="absolute bottom-6 left-1/2 z-10 flex -translate-x-1/2 gap-2">
+                {/* Slider indicators */}
+                <div className="absolute bottom-5 left-1/2 z-10 flex -translate-x-1/2 items-center gap-2 sm:bottom-6">
                     {heroImages.map((image, index) => (
                         <button
                             key={image}
@@ -135,10 +154,11 @@ export default function HeroSection() {
                             aria-label={`Show background image ${index + 1}`}
                             aria-pressed={currentImage === index}
                             onClick={() => setCurrentImage(index)}
-                            className={`h-2 rounded-full transition-all duration-500 ${currentImage === index
-                                ? "w-8 bg-[#D9B477]"
-                                : "w-2 bg-white/70 hover:bg-white"
-                                }`}
+                            className={`h-2 rounded-full transition-all duration-500 ${
+                                currentImage === index
+                                    ? "w-8 bg-[#D9B477]"
+                                    : "w-2 bg-white/70 hover:bg-white"
+                            }`}
                         />
                     ))}
                 </div>
