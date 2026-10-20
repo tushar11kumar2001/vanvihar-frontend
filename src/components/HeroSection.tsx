@@ -61,9 +61,9 @@ export default function HeroSection() {
     }, [visibleLetters, currentTextIndex]);
 
     return (
-        <main className="relative inset-0 h-screen w-full">
+    <main className="relative w-full md:h-screen">
             {/* Hero Section */}
-            <section className="relative h-full min-h-[70vh] flex items-center overflow-hidden bg-[#19382B] px-4 md:flex-row md:px-10">
+<section className="relative flex min-h-[calc(100svh-112px)] w-full items-center overflow-hidden bg-[#19382B] px-4 pb-16 pt-16 md:h-full md:min-h-[70vh] md:px-10 md:py-0"> 
                 {/* Background Image Slider */}
                 {heroImages.map((image, index) => (
                     <div
@@ -84,7 +84,7 @@ export default function HeroSection() {
                 />
 
                 {/* Hero Content */}
-                <div className="relative z-10 max-w-5xl">
+                <div className="relative z-10 w-full max-w-5xl py-8 md:w-auto md:py-0">
                     <div className="mb-4 flex items-center gap-1 text-xs font-semibold uppercase tracking-[0.3em] text-[#D9B477]">
                         <div className="w-10 border border-[#D9B477]" />
 
