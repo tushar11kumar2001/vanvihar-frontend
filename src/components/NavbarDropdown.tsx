@@ -32,7 +32,7 @@ export default function NavDropdown({
         type="button"
         aria-expanded={isOpen}
         onClick={() => setIsOpen((prev) => !prev)}
-        className={`flex items-center gap-1 whitespace-nowrap py-2 text-xs font-semibold uppercase transition-colors duration-200 lg:text-sm xl:text-base ${
+        className={`flex items-center gap-1 whitespace-nowrap py-2 text-xs font-medium uppercase transition-colors duration-200 lg:text-sm xl:text-base ${
           isOpen
             ? "text-sunset-gold"
             : "text-white hover:text-olive-green"

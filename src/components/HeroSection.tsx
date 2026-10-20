@@ -79,7 +79,7 @@ export default function HeroSection() {
                 />
 
                 {/* Hero Content */}
-                <div className="relative z-10 max-w-5xl">
+                <div className="relative top-10 z-10 max-w-5xl">
                     <div className="mb-4 flex items-center gap-1 text-xs font-semibold uppercase tracking-[0.3em] text-[#D9B477]">
                         <div className="w-10 border border-[#D9B477]" />
 
