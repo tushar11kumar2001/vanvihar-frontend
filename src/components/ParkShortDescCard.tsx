@@ -29,7 +29,7 @@ export default function NationalParkCard({
                 }`}
             >
                 {/* Park Image */}
-                <div className="relative h-full overflow-hidden">
+                <div className="relative min-h-[220px] overflow-hidden sm:min-h-0">
                     <Image
                         src={image}
                         alt={name}

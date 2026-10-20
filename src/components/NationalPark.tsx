@@ -126,70 +126,79 @@ export default function NationalParks() {
                 ))}
             </div>
 
-            {/* Desktop Zigzag Park Cards */}
-            <div className="relative mx-auto hidden max-w-7xl md:block">
-                <div className="relative z-10 mx-auto flex max-w-5xl flex-col gap-8 md:gap-12">
-                    {visibleParks.map((park, index) => (
-                        <div
-                            key={park.id}
-                            className={`flex w-full items-stretch ${index % 2 === 0
-                                    ? "justify-start"
-                                    : "justify-end"
-                                }`}
-                        >
-                            {/* Left Side Images for Odd Cards */}
-                            {index % 2 !== 0 && (
-                                <div className="flex w-[20%] shrink-0 flex-col gap-2 p-2">
-                                    <Image
-                                        src={park.image}
-                                        alt={park.name}
-                                        width={240}
-                                        height={160}
-                                        className="min-h-0 w-full flex-1 rounded-xl object-cover"
-                                    />
-
-                                    <Image
-                                        src={park.image}
-                                        alt={park.name}
-                                        width={240}
-                                        height={160}
-                                        className="min-h-0 w-full flex-1 rounded-xl object-cover"
-                                    />
-                                </div>
-                            )}
-
-                            {/* Main Park Card - 80% */}
-                            <div className="w-[80%] min-w-0">
-                                <NationalParkCard
-                                    {...park}
-                                    reverse={index % 2 !== 0}
-                                />
-                            </div>
-
-                            {/* Right Side Images for Even Cards */}
-                            {index % 2 === 0 && (
-                                <div className="flex w-[20%] shrink-0 flex-col gap-2 p-2">
-                                    <Image
-                                        src={park.image}
-                                        alt={park.name}
-                                        width={240}
-                                        height={160}
-                                        className="min-h-0 w-full flex-1 rounded-xl object-cover"
-                                    />
-
-                                    <Image
-                                        src={park.image}
-                                        alt={park.name}
-                                        width={240}
-                                        height={160}
-                                        className="min-h-0 w-full flex-1 rounded-xl object-cover"
-                                    />
-                                </div>
-                            )}
+{/* Desktop Zigzag Park Cards */}
+<div className="relative mx-auto hidden max-w-7xl md:block">
+    <div className="relative z-10 mx-auto flex max-w-5xl flex-col gap-8 md:gap-12">
+        {visibleParks.map((park, index) => (
+            <div
+                key={park.id}
+                className={`flex w-full items-stretch ${
+                    index % 2 === 0
+                        ? "flex-row"
+                        : "flex-row"
+                }`}
+            >
+                {/* Left Side Images - Odd Cards */}
+                {index % 2 !== 0 && (
+                    <div className="flex w-[20%] shrink-0 flex-col gap-2 self-stretch overflow-hidden p-2">
+                        <div className="relative min-h-0 flex-1 overflow-hidden rounded-xl">
+                            <Image
+                                src={park.image}
+                                alt={park.name}
+                                fill
+                                sizes="20vw"
+                                className="object-cover"
+                            />
                         </div>
-                    ))}
+
+                        <div className="relative min-h-0 flex-1 overflow-hidden rounded-xl">
+                            <Image
+                                src={park.image}
+                                alt={park.name}
+                                fill
+                                sizes="20vw"
+                                className="object-cover"
+                            />
+                        </div>
+                    </div>
+                )}
+
+                {/* Main Park Card - 80% */}
+                <div className="w-[80%] min-w-0 self-start">
+                    <NationalParkCard
+                        {...park}
+                        reverse={index % 2 !== 0}
+                    />
                 </div>
+
+                {/* Right Side Images - Even Cards */}
+                {index % 2 === 0 && (
+                    <div className="flex w-[20%] shrink-0 flex-col gap-2 self-stretch overflow-hidden p-2">
+                        <div className="relative min-h-0 flex-1 overflow-hidden rounded-xl">
+                            <Image
+                                src={park.image}
+                                alt={park.name}
+                                fill
+                                sizes="20vw"
+                                className="object-cover"
+                            />
+                        </div>
+
+                        <div className="relative min-h-0 flex-1 overflow-hidden rounded-xl">
+                            <Image
+                                src={park.image}
+                                alt={park.name}
+                                fill
+                                sizes="20vw"
+                                className="object-cover"
+                            />
+                        </div>
+                    </div>
+                )}
             </div>
+        ))}
+    </div>
+</div>
 
             {/* View More / Show Less */}
             {nationalParks.length > visibleInitially && (
