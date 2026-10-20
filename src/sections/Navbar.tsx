@@ -4,7 +4,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import { Menu, X } from "lucide-react";
-import NavDropdown from "./NavbarDropdown";
+import NavDropdown from "../components/NavbarDropdown";
 
 const nationalParks = [
   { label: "All National Parks", href: "#national-parks" },
@@ -63,13 +63,13 @@ export default function Navbar() {
         >
           <img
             src="/assets/images/web-logo.png"
-            alt="Wildterra"
+            alt="Vanvihar"
             className="hidden h-12 w-auto object-contain md:block lg:h-14 xl:h-20"
           />
 
           <img
             src="/assets/images/mobile-logo.jpeg"
-            alt="Wildterra"
+            alt="Vanvihar"
             className="block h-11 w-auto object-contain md:hidden"
           />
         </Link>

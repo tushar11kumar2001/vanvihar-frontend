@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { NationalPark } from "./NationalPark";
+import { NationalPark } from "../sections/NationalParkSection";
 
 
 interface MobileParkCardProps {

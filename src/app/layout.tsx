@@ -17,9 +17,9 @@ const lato = Lato({
 });
 
 export const metadata: Metadata = {
-  title: "Wildterra | Explore the Wild",
+  title: "Vanvihar | Explore the Wild",
   description:
-    "Discover national parks, wildlife safaris, and unforgettable nature stays with Wildterra.",
+    "Discover national parks, wildlife safaris, and unforgettable nature stays with Vanvihar.",
 };
 
 export default function RootLayout({

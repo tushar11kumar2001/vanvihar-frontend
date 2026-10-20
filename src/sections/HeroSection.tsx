@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import BookingForm from "./BookingForm";
+import BookingForm from "../components/BookingForm";
 
 const heroImages = [
     "/assets/images/hero-elephant.jpeg",

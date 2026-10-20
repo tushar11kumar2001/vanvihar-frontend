@@ -3,8 +3,8 @@
 import { useState } from "react";
 import Image from "next/image";
 
-import NationalParkCard from "./ParkShortDescCard";
-import MobileParkCard from "./MobileParkCard";
+import NationalParkCard from "../components/ParkShortDescCard";
+import MobileParkCard from "../components/MobileParkCard";
 
 export interface NationalPark {
     id: number;
