@@ -50,7 +50,7 @@ export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-[#e5e1d5]  backdrop-blur-md">
+    <header className="sticky top-0 z-50 w-full border-b border-[#e5e1d5] bg-[#19382B]  backdrop-blur-md">
       <nav className="flex w-full items-center justify-between gap-2 px-3 py-2 md:gap-3 md:px-4 lg:gap-4 lg:px-6 xl:gap-6 xl:px-10">
         
         
@@ -97,7 +97,7 @@ export default function Navbar() {
 
           <a
             href="#contact"
-            className="whitespace-nowrap rounded-r-full bg-deep-forest-green px-2 py-2 text-xs font-semibold text-white transition-colors hover:bg-sunset-gold hover:text-charcoal-green lg:px-3 lg:py-3 lg:text-sm xl:px-4"
+            className="whitespace-nowrap rounded-r-full bg-olive-green px-2 py-2 text-xs font-semibold text-white transition-colors hover:bg-sunset-gold hover:text-charcoal-green lg:px-3 lg:py-3 lg:text-sm xl:px-4"
           >
             Enquire Now ↗
           </a>

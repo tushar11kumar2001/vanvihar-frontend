@@ -2,6 +2,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import BookingForm from "./BookingForm";
 
 const heroImages = [
     "/assets/images/hero-elephant.jpeg",
@@ -21,14 +22,20 @@ export default function HeroSection() {
     const [currentImage, setCurrentImage] = useState(0);
     const [currentTextIndex, setCurrentTextIndex] = useState(0);
     const [visibleLetters, setVisibleLetters] = useState(0);
-
+    const [isFormVisible, setIsFormVisible] = useState(false);
     // Background image slider
     useEffect(() => {
+        const timeout = setTimeout(() => {
+            setIsFormVisible(true);
+        }, 2000);
         const interval = setInterval(() => {
             setCurrentImage((prev) => (prev + 1) % heroImages.length);
         }, 5000);
 
-        return () => clearInterval(interval);
+        return () => {
+            clearInterval(interval);
+            clearTimeout(timeout);
+        };
     }, []);
 
     // Letter-by-letter typing animation
@@ -54,19 +61,17 @@ export default function HeroSection() {
     }, [visibleLetters, currentTextIndex]);
 
     return (
-        <main className="absolute inset-0 h-screen w-full">
+        <main className="relative inset-0 h-screen w-full">
             {/* Hero Section */}
-            <section className="relative flex h-full min-h-[70vh] overflow-hidden bg-[#19382B] px-10 items-center" >
-
+            <section className="relative h-full min-h-[70vh] flex items-center overflow-hidden bg-[#19382B] px-4 md:flex-row md:px-10">
                 {/* Background Image Slider */}
                 {heroImages.map((image, index) => (
                     <div
                         key={image}
-                        className={`absolute inset-0 h-full bg-cover bg-center bg-no-repeat transition-opacity duration-[1500ms] ease-in-out ${
-                            currentImage === index
-                                ? "opacity-100"
-                                : "opacity-0"
-                        }`}
+                        className={`absolute inset-0 h-full bg-cover bg-center bg-no-repeat transition-opacity duration-[1500ms] ease-in-out ${currentImage === index
+                            ? "opacity-100"
+                            : "opacity-0"
+                            }`}
                         style={{ backgroundImage: `url('${image}')` }}
                         aria-hidden="true"
                     />
@@ -79,24 +84,24 @@ export default function HeroSection() {
                 />
 
                 {/* Hero Content */}
-                <div className="relative top-10 z-10 max-w-5xl">
+                <div className="relative z-10 max-w-5xl">
                     <div className="mb-4 flex items-center gap-1 text-xs font-semibold uppercase tracking-[0.3em] text-[#D9B477]">
                         <div className="w-10 border border-[#D9B477]" />
 
                         <p>INDIA'S WILDLIFE. NEXT JOURNEY</p>
                     </div>
 
-                        <h1 className=" w-[100%] font-serif text-3xl leading-tight text-white md:text-5xl">Explore National parks</h1>
-                        <h1 className="w-[70%] font-serif text-3xl leading-tight   md:text-4    xl text-[#D9B477]">
-                           <span className="text-white">& book</span> {animatedTexts[currentTextIndex].slice(
-                                0,
-                                visibleLetters
-                            )}
-                            <span
-                                className="ml-1 inline-block h-[0.8em] w-[2px] animate-pulse bg-[#D9B477] align-middle"
-                                aria-hidden="true"
-                            />
-                        </h1>
+                    <h1 className=" w-[100%] font-serif text-3xl leading-tight text-white md:text-5xl">Explore National parks</h1>
+                    <h1 className="w-[70%] font-serif text-3xl leading-tight   md:text-4    xl text-[#D9B477]">
+                        <span className="text-white">& book</span> {animatedTexts[currentTextIndex].slice(
+                            0,
+                            visibleLetters
+                        )}
+                        <span
+                            className="ml-1 inline-block h-[0.8em] w-[2px] animate-pulse bg-[#D9B477] align-middle"
+                            aria-hidden="true"
+                        />
+                    </h1>
 
                     <p className="mt-6 max-w-xl text-base leading-7 text-white/90 md:text-lg">
                         Explore breathtaking national parks, unforgettable
@@ -111,6 +116,16 @@ export default function HeroSection() {
                     </a>
                 </div>
 
+                {/* Booking Form */}
+                <div
+                    className={`hidden md:block relative z-10 mt-8 w-full transition-all duration-700 ease-out md:absolute md:right-10 md:top-1/2 md:mt-0 md:w-auto ${isFormVisible
+                            ? "translate-y-0 opacity-100 md:-translate-y-1/2"
+                            : "pointer-events-none translate-y-6 opacity-0 md:translate-y-[calc(-50%+24px)]"
+                        }`}
+                >
+                    {isFormVisible && <BookingForm />}
+                </div>
+
                 {/* Slider Indicators */}
                 <div className="absolute bottom-6 left-1/2 z-10 flex -translate-x-1/2 gap-2">
                     {heroImages.map((image, index) => (
@@ -120,11 +135,10 @@ export default function HeroSection() {
                             aria-label={`Show background image ${index + 1}`}
                             aria-pressed={currentImage === index}
                             onClick={() => setCurrentImage(index)}
-                            className={`h-2 rounded-full transition-all duration-500 ${
-                                currentImage === index
-                                    ? "w-8 bg-[#D9B477]"
-                                    : "w-2 bg-white/70 hover:bg-white"
-                            }`}
+                            className={`h-2 rounded-full transition-all duration-500 ${currentImage === index
+                                ? "w-8 bg-[#D9B477]"
+                                : "w-2 bg-white/70 hover:bg-white"
+                                }`}
                         />
                     ))}
                 </div>
